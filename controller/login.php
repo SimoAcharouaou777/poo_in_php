@@ -13,8 +13,14 @@ if(isset($_POST['submit'])){
         $userData = $user->getByUsername();
         if($userData && password_verify($password , $userData['password'])){
             $_SESSION['username'] = $username;
-            header("location:../vue/user/user.php");
-            exit();
+            if($userData['role'] == "user"){
+                header("location:../vue/user/user.php");
+                exit();
+            }else{
+                header("location:../vue/admin/admin.php");
+                exit();
+            }
+            
         }else{
             echo"invalid username or password";
         }
