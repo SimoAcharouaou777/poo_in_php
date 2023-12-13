@@ -14,11 +14,12 @@ if(isset($_POST['submit'])){
     }else{
 
         $user = new User($username, $fullname , $password);
-
-        if( $user->getByUsername()){
+        $userdata = $user->getByUsername();
+        if($userdata){
           echo"this username is already exist";
         }else{
             $user->create();
+            header("location:../vue/login.php");
         }
     }
 }

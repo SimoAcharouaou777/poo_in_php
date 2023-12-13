@@ -1,5 +1,7 @@
 <?php
-include_once('/connection/connect.php');
+include_once('../connection/connect.php');
+include('../controller/login.Php');
+
 
 ?>
 
@@ -20,7 +22,7 @@ include_once('/connection/connect.php');
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Login</h5>
-                    <form>
+                    <form method ="post" action="">
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control" id="username" name="username" required>
@@ -30,7 +32,7 @@ include_once('/connection/connect.php');
                             <input type="password" class="form-control" id="password" name="password" required>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="submit" class="btn btn-primary" name="submit">Login</button>
                     </form>
                 </div>
             </div>

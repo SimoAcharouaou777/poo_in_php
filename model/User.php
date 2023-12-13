@@ -39,7 +39,7 @@ include_once('../connection/connect.php');
         $result = mysqli_stmt_get_result($stmt);
         if($row = mysqli_fetch_assoc($result)){
           mysqli_stmt_close($stmt);
-          return $row['username'];
+          return $row;
         }else{
           return null;
         }
