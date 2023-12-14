@@ -1,6 +1,6 @@
 <?php
 include_once('../connection/connect.php');
-include('../controller/signup.Php');
+include('../controller/AuthController.Php');
 
 ?>
 
@@ -34,7 +34,7 @@ include('../controller/signup.Php');
                             <label for="password" class="form-label">Password</label>
                             <input type="password" class="form-control" id="password" name="password" required>
                         </div>
-                        <button type="submit" class="btn btn-primary" name ="submit">Sign Up</button>
+                        <button type="submit" class="btn btn-primary" name ="submitup">Sign Up</button>
                     </form>
                 </div>
             </div>

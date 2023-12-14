@@ -1,6 +1,6 @@
 <?php
 include_once('../connection/connect.php');
-include('../controller/login.Php');
+include('../controller/AuthController.Php');
 
 
 ?>
@@ -32,7 +32,7 @@ include('../controller/login.Php');
                             <input type="password" class="form-control" id="password" name="password" required>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary" name="submit">Login</button>
+                        <button type="submit" class="btn btn-primary" name="submitin">Login</button>
                     </form>
                 </div>
             </div>
