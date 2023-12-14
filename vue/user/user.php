@@ -3,8 +3,9 @@ session_start();
 include_once( "../../connection/connect.php");
 include( "../../model/User.php");
 
+$user = new User($_SESSION['username'] , $_SESSION['fullname'] , '');
+$userdata = $user->getByUsername();
 
-$user  =  User::findUserById($_SESSION["id"]);
 
 ?>
 <!DOCTYPE html>
@@ -21,7 +22,7 @@ $user  =  User::findUserById($_SESSION["id"]);
     <nav class="nav nav-borders">
 
         <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Profile</a>
-        <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-security-page" target="__blank">Security</a>
+        <a class="nav-link" href="UserSecurity.php" target="__blank">Security</a>
 
     </nav>
     <hr class="mt-0 mb-4">
@@ -32,7 +33,7 @@ $user  =  User::findUserById($_SESSION["id"]);
                 <div class="card-header">Profile Picture</div>
                 <div class="card-body text-center">
                     <!-- Profile picture image-->
-                    <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                    <img class="img-account-profile rounded-circle mb-2 " hight="150px" width="150px" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
                     <!-- Profile picture help block-->
                     <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                     <!-- Profile picture upload button-->
@@ -49,7 +50,7 @@ $user  =  User::findUserById($_SESSION["id"]);
                         <!-- Form Group (username)-->
                         <div class="mb-3">
                             <label class="small mb-1" for="inputUsername">Username </label>
-                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="<?php echo $user->getUsername(); ?>" name="username">
+                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="<?php echo $userdata['username']; ?>" name="username">
 
                         </div>
                         <!-- Form Row-->
@@ -57,39 +58,38 @@ $user  =  User::findUserById($_SESSION["id"]);
                             <!-- Form Group (full name)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputFirstName">Full name</label>
-                                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="<?php echo $user->getUsername(); ?>" name="fullname">
+                                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="<?php echo $userdata['full_name']; ?>" name="fullname">
                             </div>
-                          
-                            
+        
                         </div>
                         <!-- Form Row        -->
                         <div class="row gx-3 mb-3">
                           
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputLocation">Location</label>
-                                <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="San Francisco, CA">
+                                <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="">
                             </div>
                         </div>
                         <!-- Form Group (email address)-->
                         <div class="mb-3">
                             <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com">
+                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="">
                         </div>
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (phone number)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputPhone">Phone number</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567">
+                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="">
                             </div>
                             <!-- Form Group (birthday)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
+                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="">
                             </div>
                         </div>
                         <!-- Save changes button-->
-                        <button class="btn btn-primary" type="button">Save changes</button>
+                        <button class="btn btn-primary" type="button" name ="submit">Save changes</button>
                     </form>
                 </div>
             </div>

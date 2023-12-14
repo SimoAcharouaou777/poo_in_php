@@ -1,8 +1,8 @@
 <?php
-
-include_once('../connection/connect.php');
-include('../model/user.php');
 session_start();
+include_once('../connection/connect.php');
+include('../model/User.php');
+
 class AuthController 
 {
 

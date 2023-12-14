@@ -1,5 +1,6 @@
 <?php
-include_once('../connection/connect.php');
+
+include_once __DIR__ .'/../connection/connect.php';
 
 
 
@@ -48,32 +49,5 @@ include_once('../connection/connect.php');
        }
 
     }
-
-    public static function findUserById($id){
-      global $connect;
-      $sql ="SELECT * FROM users WHERE id = ?";
-      $stmt =mysqli_prepare($connect , $sql);
-      if($stmt){
-
-       mysqli_stmt_bind_param($stmt, "s" , $id);
-       mysqli_stmt_execute($stmt);
-       $result = mysqli_stmt_get_result($stmt);
-       if($row = mysqli_fetch_assoc($result)){
-         mysqli_stmt_close($stmt);
-         return new User($row["username"],$row["full_name"] ,$row["password"] );  
-       }else{
-         return null;
-       }
-      }else{
-       echo"error : ".mysqli_error($stmt);
-      }
-
-   }
-
-   public function getUsername(){
-    return $this->username;
-    return $this->fullname;
-    
-   }
 
   }
