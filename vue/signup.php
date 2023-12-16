@@ -1,6 +1,6 @@
 <?php
-include_once('../connection/connect.php');
-include('../controller/AuthController.Php');
+include_once('../App/connection/connect.php');
+use App\controller\AuthController;
 
 ?>
 
@@ -21,7 +21,7 @@ include('../controller/AuthController.Php');
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Sign Up</h5>
-                    <form method="post" action="">
+                    <form method="post" action="../App/controller/AuthController.Php">
                         <div class="mb-3">
                             <label for="username" class="form-label" >Username</label>
                             <input type="text" class="form-control" id="username" name="username" required>

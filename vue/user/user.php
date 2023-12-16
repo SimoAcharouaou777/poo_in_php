@@ -1,7 +1,9 @@
 <?php
+require_once '../../vendor/autoload.php';
+require_once'../../App/connection/connect.php';
+use App\controller\AuthController;
+use App\model\User;
 session_start();
-include_once( "../../connection/connect.php");
-include( "../../model/User.php");
 
 $user = new User($_SESSION['username'] , $_SESSION['fullname'] , '');
 $userdata = $user->getByUsername();

@@ -2,9 +2,9 @@
     "require": {
         "vlucas/phpdotenv": "^5.6"
     },
-    "autoload" :{
+    "autoload": {
         "psr-4": {
-            "App\\":"/"     
+            "App\\": "app/"
         }
     }
 }

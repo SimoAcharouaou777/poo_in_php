@@ -1,4 +1,5 @@
 <?php
+namespace App\model;
 
 include_once __DIR__ .'/../connection/connect.php';
 
@@ -28,11 +29,11 @@ include_once __DIR__ .'/../connection/connect.php';
             echo"error : ".mysqli_error($stmt);
         }
     }
-
+      
     public function getByUsername(){
-       global $connect;
+        global $connect;
        $sql ="SELECT * FROM users WHERE username = ?";
-       $stmt =mysqli_prepare($connect , $sql);
+       $stmt = mysqli_prepare($connect , $sql);
        if($stmt){
         $username=$this->username;
         mysqli_stmt_bind_param($stmt, "s" , $username);

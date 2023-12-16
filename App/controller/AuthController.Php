@@ -1,7 +1,10 @@
 <?php
+
+namespace App\controller;
+
 session_start();
-include_once('../connection/connect.php');
-include('../model/User.php');
+include_once(__DIR__.'/../connection/connect.php');
+use App\model\User;
 
 class AuthController 
 {
@@ -19,7 +22,7 @@ class AuthController
               echo"this username already exists";
             }else{
                 $user->create();
-                header("location:../vue/login.php");
+                header("location:../../vue/login.php");
             }
         }
     }
@@ -33,13 +36,13 @@ class AuthController
             $userData = $user->getByUsername();
             if($userData && password_verify($password , $userData['password'])){
                 $_SESSION['username'] = $username;
-                $_SESSION['id'] = $id; 
+                $_SESSION['id'] = $userData['id']; 
                 $_SESSION['fullname'] = $fullname;
                 if($userData['role'] == "user"){
-                    header("location:../vue/user/user.php");
+                    header("location:../../vue/user/user.php");
                     exit();
                 }else{
-                    header("location:../vue/admin/admin.php");
+                    header("location:../../vue/admin/admin.php");
                     exit();
                 }
                 
@@ -49,7 +52,6 @@ class AuthController
         }
     }
 }
-   
 
 if(isset($_POST['submitup'])){
     
