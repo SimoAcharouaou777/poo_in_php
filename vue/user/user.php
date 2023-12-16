@@ -23,7 +23,7 @@ $userdata = $user->getByUsername();
     <!-- Account page navigation-->
     <nav class="nav nav-borders">
 
-        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Profile</a>
+        <a class="nav-link active ms-0" href="user.php" target="__blank">Profile</a>
         <a class="nav-link" href="UserSecurity.php" target="__blank">Security</a>
 
     </nav>
