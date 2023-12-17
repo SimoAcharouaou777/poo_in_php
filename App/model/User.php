@@ -39,7 +39,7 @@ include_once __DIR__ .'/../connection/connect.php';
         }
     }
 
-    public function update($username,$fullname, $location , $phone_number , $email , $birthday){
+    public function update($fullname, $location , $phone_number , $email , $birthday){
       global $connect;
        $sql ="UPDATE users SET full_name = ? , location = ? , phone_number = ? , email = ? , birthday = ? WHERE username = ?";
        $stmt = mysqli_prepare($connect,$sql);

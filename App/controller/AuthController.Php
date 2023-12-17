@@ -35,11 +35,7 @@ class AuthController
             $user = new User($username ,$fullname ,$password , $location , $phone_number , $email,$birthday);
             $userData = $user->getByUsername();
             if($userData && password_verify($password , $userData['password'])){
-                $_SESSION['username'] = $username;
-                $_SESSION['id'] = $userData['id']; 
-                $_SESSION['fullname'] = $fullname;
-              
-                
+                $_SESSION['username'] = $username; 
                 if($userData['role'] == "user"){
                     header("location:../../vue/user/user.php");
                     exit();

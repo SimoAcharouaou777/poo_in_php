@@ -1,4 +1,16 @@
+<?php
+session_start();
 
+if (!isset($_SESSION['username'])) {
+    header("Location: ../../vue/login.php");
+    exit();
+}
+if ($_SESSION['role'] !== 'admin') {
+    header("Location: ../../vue/user/user.php");
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

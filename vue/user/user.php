@@ -4,10 +4,17 @@ require_once'../../App/connection/connect.php';
 session_start();
 use App\controller\AuthController;
 use App\model\User;
-
+if (!isset($_SESSION['username'])) {
+    header("Location: ../../vue/login.php");
+    exit();
+}
 
 $userdata = User::getUserdata($_SESSION['username']);
 
+if ($userdata['role'] === 'admin') {
+    header("Location: ../../vue/admin/admin.php");
+    exit();
+}
 
 ?>
 <!DOCTYPE html>
