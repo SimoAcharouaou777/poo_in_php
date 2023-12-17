@@ -1,12 +1,12 @@
 <?php
 require_once '../../vendor/autoload.php';
 require_once'../../App/connection/connect.php';
+session_start();
 use App\controller\AuthController;
 use App\model\User;
-session_start();
 
-$user = new User($_SESSION['username'] , $_SESSION['fullname'] , '');
-$userdata = $user->getByUsername();
+
+$userdata = User::getUserdata($_SESSION['username']);
 
 
 ?>
@@ -48,7 +48,7 @@ $userdata = $user->getByUsername();
             <div class="card mb-4">
                 <div class="card-header">Account Details</div>
                 <div class="card-body">
-                    <form>
+                    <form method="post" action="../../App/controller/AuthController.php">
                         <!-- Form Group (username)-->
                         <div class="mb-3">
                             <label class="small mb-1" for="inputUsername">Username </label>
@@ -69,29 +69,29 @@ $userdata = $user->getByUsername();
                           
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputLocation">Location</label>
-                                <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="">
+                                <input class="form-control" name="location" id="inputLocation" type="text" placeholder="Enter your location" value="<?php  echo $userdata['location'];?>">
                             </div>
                         </div>
                         <!-- Form Group (email address)-->
                         <div class="mb-3">
                             <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="">
+                            <input class="form-control" name="email" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="<?php  echo $userdata['email'];?>">
                         </div>
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (phone number)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputPhone">Phone number</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="">
+                                <input class="form-control" name="phone_number" id="inputPhone" type="tel" placeholder="Enter your phone number" value="<?php  echo $userdata['phone_number'];?>">
                             </div>
                             <!-- Form Group (birthday)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="">
+                                <input class="form-control"  id="inputBirthday" type="date" name="birthday" placeholder="Enter your birthday" value="<?php  echo $userdata['birthday'];?>">
                             </div>
                         </div>
                         <!-- Save changes button-->
-                        <button class="btn btn-primary" type="button" name ="submit">Save changes</button>
+                        <button class="btn btn-primary" type="submit" name ="submitsave">Save changes</button>
                     </form>
                 </div>
             </div>
